@@ -1,0 +1,13 @@
+{
+  "pixKey": "65717703000180",
+  "merchantName": "BE EASY PRINT",
+  "merchantCity": "SAO PAULO",
+  "unitPrice": 2.0,
+  "adminPassword": "NovaSenha@999",
+  "wifiSsid": "beEASY_Loja",
+  "wifiPassword": "senha1234",
+  "customIp": "",
+  "serverPort": 8089,
+  "selectedPrinter": "",
+  "useMockPrinter": true
+}

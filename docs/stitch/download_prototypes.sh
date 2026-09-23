@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -e
+
+mkdir -p docs/stitch/images docs/stitch/code
+
+echo "Downloading Screen 1: Tela de Boas-Vindas..."
+curl -L -s -o docs/stitch/images/1_totem_boas_vindas.png "https://lh3.googleusercontent.com/aida/AEtjO1XPSuBvb3cdrgTZX6UaNzHXfySe_MzOFvIwpXBfSrwZ3z6ioFiy3xdh66-67vShDC8Fm1zJXzoVWz2vmfOKzlAqhh2KWHqPPgB2AP7zlHIC0You68tk-aPRV06Way-fWRltpyH7-Vlo57HrNdYOp2gIh_tmyq2ojrZbftbs_eBQAP6ux6d7CniZ8ywq3tEBx6Wy-KcSQmXFUq9DXef5_9xepBvy9yn4OzqUYhMyAZftskraSsbk1iHKpsek"
+curl -L -s -o docs/stitch/code/1_totem_boas_vindas.html "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1YzFhM2Q4MTA3NDIwOTEwNGYzMDM0MmUwZWE0EgsSBxCelJqpqhQYAZIBJAoKcHJvamVjdF9pZBIWQhQxMDc0OTI1MTU0NTc2MDg0MjU4OQ&filename=&opi=89354086"
+
+echo "Downloading Screen 2: Totem - Conexão Wi-Fi..."
+curl -L -s -o docs/stitch/images/2_totem_conexao_wifi.png "https://lh3.googleusercontent.com/aida/AEtjO1XNeABMN7D_b7DOR3IRcticZiiLD-xy4SsDegs6TKxBomDpKAzI_eOs23eVVGRA98q2PhMHFy4BEm0dbP5cpRmUcJ_eEX9QwD_4fHuS5rdf8jPMxyzsonNNDWXh3bbcb27j5LBuCtiRue4YWCJ9sSZrCYx9Nj0vJ4SMFY3JtRotpQXu3Q5lOFv-2_RKzS3idEkte7K-Y4KpR8WahfRABL3jdIVFFlVmJOxLy_rvIewFOrvB2I9vCbReByPZ"
+curl -L -s -o docs/stitch/code/2_totem_conexao_wifi.html "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1YzFhM2Q1ZGI5MWEwMjhmMDk2ZTZlMTQ0ZTkwEgsSBxCelJqpqhQYAZIBJAoKcHJvamVjdF9pZBIWQhQxMDc0OTI1MTU0NTc2MDg0MjU4OQ&filename=&opi=89354086"
+
+echo "Downloading Screen 3: Totem - Envio de Arquivos..."
+curl -L -s -o docs/stitch/images/3_totem_envio_arquivos.png "https://lh3.googleusercontent.com/aida/AEtjO1UfoaBWtlYnzHKjBA-Hl-o5q-85M9iYp70n9Wmi_Zn44rQ2wNSbSpSNz_izfOkbElKd6irY886AUbD4udmATXDosHEBfZ3IID6L_eZXRLWpkB3IgpkJIibc6Dixg-WlWro0U4d69B0N-U8lrHD4oP9CFUuo0QPzYDLvuEsNmI03dH6NOnGcieRAgSh6dQJYr8ftvQbW8QrKAVgMtCbOTThUI0buznQwDk7Y4H2qP-VTnldA32DmVhDC-MIu"
+curl -L -s -o docs/stitch/code/3_totem_envio_arquivos.html "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1YzFhM2Q5M2IxNWUwMjhmMDk2ZTZlMTQ0ZTkwEgsSBxCelJqpqhQYAZIBJAoKcHJvamVjdF9pZBIWQhQxMDc0OTI1MTU0NTc2MDg0MjU4OQ&filename=&opi=89354086"
+
+echo "Downloading Screen 4: Totem - Confirmação do Pedido..."
+curl -L -s -o docs/stitch/images/4_totem_confirmacao_pedido.png "https://lh3.googleusercontent.com/aida/AEtjO1XJkk-c_AhEkPbCI7GQmKirTp7b6j32wohiMeG19tcLz-v4T-EpLikdOO2JePDJKOz5evTHjSqXrZVEoNRCp8OfAokKPg_ycU_mUYflxKLCNR3O4uCrfSAMUqwDbT7OKVak-DG_GdNiorsNH8jeJ8Ghjugz2LgcH2yosCwGIw1RGFD4RZ1FvqTKEVIwuA2jxXv04nqvTTEB2Ow-7gH43MCKQ5DNwk8dk8z9CY_9VFvAvfAjObMPKPNnbPNp"
+curl -L -s -o docs/stitch/code/4_totem_confirmacao_pedido.html "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1YzFhM2Q1Mjk2NmYwMzMyYzk0M2M4MGRjYTc4EgsSBxCelJqpqhQYAZIBJAoKcHJvamVjdF9pZBIWQhQxMDc0OTI1MTU0NTc2MDg0MjU4OQ&filename=&opi=89354086"
+
+echo "Downloading Screen 5: Totem - Pagamento PIX e Impressão..."
+curl -L -s -o docs/stitch/images/5_totem_pagamento_pix.png "https://lh3.googleusercontent.com/aida/AEtjO1WTXj4e2dVhkaNLSrgTzW_KXDbz51i0ePqi2XScV3goG5JU9mX4QBxD2EIH9gT7BystvugWXt2Dw_cRglQ0ue_7-8i2vpLJAd1iWAarxrUxhqvlkuOHrLIB6399cDQgtdoHTe0FlO0FgonNQnPhNlwPd1YpYIpUfS7HHfV44sguZu-8882NT22wgGlxLHPNjB7mmktEDFrfY71QKcVi6kTrQw8papBuZ4I_kORuQnAwh0LAHR_TRFDpKk8"
+curl -L -s -o docs/stitch/code/5_totem_pagamento_pix.html "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1YzFhM2ZhZDIyYTkwN2M0YzRjNTgwMjZiNzEzEgsSBxCelJqpqhQYAZIBJAoKcHJvamVjdF9pZBIWQhQxMDc0OTI1MTU0NTc2MDg0MjU4OQ&filename=&opi=89354086"
+
+echo "Downloading Screen 6: Web App - Enviar PDF pelo Celular..."
+curl -L -s -o docs/stitch/images/6_webapp_enviar_pdf.png "https://lh3.googleusercontent.com/aida/AEtjO1UNdNvImJjYLEs40mMsU8kXgm_BSucIIEp3wQ_HZk8EMkCAk4Jh9Y7JBCvjQ41CRCGghNzag1G8BEe0mjSEm67EtroJSAhSuxGPzo8MtU5gFhWQggN79k756yxm_Zkf8JneS-tsU3Qpyt9UbZu4MacdwWSVuW3JqEPtHDKyPF78-r0dhQtyro83MGsMp4EtjqOQEgjw1kSsq7avgfvBR72xPbtE5tgPVTlRMfwWbTZ8IpBTuwsX5FYdik9Y"
+curl -L -s -o docs/stitch/code/6_webapp_enviar_pdf.html "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1YzFhNDY2NTRiMGYwMjJkNjQ4MmE1MDA4YjU1EgsSBxCelJqpqhQYAZIBJAoKcHJvamVjdF9pZBIWQhQxMDc0OTI1MTU0NTc2MDg0MjU4OQ&filename=&opi=89354086"
+
+echo "Downloading Screen 7: Web App - Confirmação do Pedido..."
+curl -L -s -o docs/stitch/images/7_webapp_confirmacao_pedido.png "https://lh3.googleusercontent.com/aida/AEtjO1UXJC6MZFuUwvGw486ubYgUf98CWikrs5X9N1-dLVsgww8z4yag-OoAweFGLHRKKxNKyqCUsc9yH9c_vYW8ZIhiaRVewt4dbYX9LXE8ocsnNLMlwD5B8uKimxM58YZ8zefXVOQY_neDwaZUPE7hF2Vhrnpz7LfrUpWluFb2fzmiGdR29KLa4BneJN3dNeCyRO0KyF2jZuxbNKhRcKrhDFdiluIWhA75uU4XKfWNVNgsfUJNatvLUNtE1jI5"
+curl -L -s -o docs/stitch/code/7_webapp_confirmacao_pedido.html "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1YzFhNGNlZmY3ZjAwMzM4NWM2MTYyMTQ1ZTUxEgsSBxCelJqpqhQYAZIBJAoKcHJvamVjdF9pZBIWQhQxMDc0OTI1MTU0NTc2MDg0MjU4OQ&filename=&opi=89354086"
+
+echo "Downloading Screen 8: Web App - Pagamento PIX e Impressão..."
+curl -L -s -o docs/stitch/images/8_webapp_pagamento_pix.png "https://lh3.googleusercontent.com/aida/AEtjO1X7fNQjhJZHYzywz9OnaXSkdOLKbwOJ1R1IYcavSCIhSbS2V9779HclRn2jkltupJIWXxO45VSORRX-S1xlXrHFsMx3qQEfkI0CKRe3heuUycn-27Vr19ZLcGBMpLsp5t7EJ4M1FYxgYPd6QS3NI3Va1fXqRdxL6bPTJVaY3gHHuc8J4QsHmhSyUqTwPfJJe8oc5eGFuNLcb-SRBtpHzqMucKteXIR2iIz0uhz_KCz7C8gzDZ1BeJYuj1Or"
+curl -L -s -o docs/stitch/code/8_webapp_pagamento_pix.html "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1YzFhNGNiYmQ2ODEwMWVlN2M5YWVkMDA5ZGYwEgsSBxCelJqpqhQYAZIBJAoKcHJvamVjdF9pZBIWQhQxMDc0OTI1MTU0NTc2MDg0MjU4OQ&filename=&opi=89354086"
+
+echo "All prototype assets downloaded successfully!"

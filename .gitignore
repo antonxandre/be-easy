@@ -1,0 +1,49 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+
+# Archive files & binaries
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.exe
+
+# Flutter/Dart/Pub
+**/.dart_tool/
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+**/build/
+**/coverage/
+**/doc/api/
+**/.widget_preview/
+
+# IDE / Editor
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ephemeral / Native outputs
+**/ephemeral/
+**/Pods/
+dist_windows/
+
+# Server runtime data & uploads
+be_easy_server/data/
+be_easy_server/uploads/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
