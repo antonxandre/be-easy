@@ -21,7 +21,7 @@ class DesktopOrderSummaryView extends StatelessWidget {
     final unitPrice = job?.unitPrice ?? 2.0;
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 32),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 720),
@@ -31,23 +31,25 @@ class DesktopOrderSummaryView extends StatelessWidget {
               Wrap(
                 alignment: WrapAlignment.spaceBetween,
                 crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 12,
-                runSpacing: 12,
+                spacing: 8,
+                runSpacing: 4,
                 children: [
                   OutlinedButton.icon(
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppColors.secondary,
                       side: const BorderSide(color: AppColors.borderTanLight),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16)),
+                          borderRadius: BorderRadius.circular(12)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 6),
                     ),
                     onPressed: () => vm.previousStep(),
-                    icon: const Icon(Icons.arrow_back_rounded, size: 18),
-                    label: const Text('Voltar'),
+                    icon: const Icon(Icons.arrow_back_rounded, size: 15),
+                    label: const Text('Voltar', style: TextStyle(fontSize: 12)),
                   ),
                   Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                     decoration: BoxDecoration(
                       color: AppColors.surfaceContainerHigh,
                       borderRadius: BorderRadius.circular(20),
@@ -56,18 +58,18 @@ class DesktopOrderSummaryView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          width: 8,
-                          height: 8,
+                          width: 7,
+                          height: 7,
                           decoration: const BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
                           ),
                         ),
-                        const SizedBox(width: 8),
+                        const SizedBox(width: 6),
                         const Text(
                           'Etapa 3 de 4 • Confirmação & Cálculo',
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 11,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textPrimary,
                           ),
@@ -77,7 +79,7 @@ class DesktopOrderSummaryView extends StatelessWidget {
                   ),
                   Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: AppColors.dropzoneTint,
                       borderRadius: BorderRadius.circular(20),
@@ -86,12 +88,12 @@ class DesktopOrderSummaryView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(Icons.verified_user_rounded,
-                            size: 16, color: AppColors.primary),
-                        SizedBox(width: 6),
+                            size: 13, color: AppColors.primary),
+                        SizedBox(width: 4),
                         Text(
                           'Ambiente Seguro',
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 10.5,
                               fontWeight: FontWeight.w700,
                               color: AppColors.primary),
                         ),
@@ -100,77 +102,86 @@ class DesktopOrderSummaryView extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 28),
+              const SizedBox(height: 8),
 
               // Card de Resumo
               AppCard(
-                padding: const EdgeInsets.all(36),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 child: Column(
                   children: [
-                    // Ícone com Badge PDF
-                    Stack(
-                      alignment: Alignment.center,
+                    // Header horizontal do Resumo
+                    Row(
                       children: [
-                        Container(
-                          width: 88,
-                          height: 88,
-                          decoration: BoxDecoration(
-                            color: AppColors.dropzoneTint,
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          child: const Icon(
-                            Icons.description_rounded,
-                            size: 50,
-                            color: AppColors.secondary,
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 2),
-                            decoration: BoxDecoration(
-                              color: AppColors.secondary,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: const Text(
-                              'PDF',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white,
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Container(
+                              width: 44,
+                              height: 44,
+                              decoration: BoxDecoration(
+                                color: AppColors.dropzoneTint,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: const Icon(
+                                Icons.description_rounded,
+                                size: 24,
+                                color: AppColors.secondary,
                               ),
                             ),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 1),
+                                decoration: BoxDecoration(
+                                  color: AppColors.secondary,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: const Text(
+                                  'PDF',
+                                  style: TextStyle(
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 12),
+                        const Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Resumo da Impressão',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.textPrimary,
+                                ),
+                              ),
+                              SizedBox(height: 1),
+                              Text(
+                                'Confira os detalhes e valores antes de emitir a impressão',
+                                style: TextStyle(
+                                    fontSize: 11.5, color: AppColors.textSecondary),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
-
-                    const Text(
-                      'Resumo da Impressão',
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    const Text(
-                      'Confira os detalhes e valores antes de emitir a impressão',
-                      style: TextStyle(
-                          fontSize: 15, color: AppColors.textSecondary),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 10),
 
                     // Painel com Especificações do Arquivo
                     Container(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       decoration: BoxDecoration(
                         color: AppColors.surfaceContainerLow,
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(
                         children: [
@@ -178,16 +189,16 @@ class DesktopOrderSummaryView extends StatelessWidget {
                           Row(
                             children: [
                               Container(
-                                width: 40,
-                                height: 40,
+                                width: 28,
+                                height: 28,
                                 decoration: BoxDecoration(
                                   color: AppColors.surface,
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(6),
                                 ),
                                 child: const Icon(Icons.attach_file_rounded,
-                                    color: AppColors.secondary, size: 22),
+                                    color: AppColors.secondary, size: 16),
                               ),
-                              const SizedBox(width: 14),
+                              const SizedBox(width: 8),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,13 +206,13 @@ class DesktopOrderSummaryView extends StatelessWidget {
                                     const Text(
                                       'Arquivo carregado',
                                       style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: 10,
                                           color: AppColors.textSecondary),
                                     ),
                                     Text(
                                       fileName,
                                       style: const TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w700,
                                           color: AppColors.textPrimary),
                                       maxLines: 1,
@@ -212,70 +223,78 @@ class DesktopOrderSummaryView extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const Divider(height: 28),
+                          const Divider(height: 12),
 
                           // Métricas (Páginas e Preço)
                           Row(
                             children: [
                               Expanded(
                                 child: Container(
-                                  padding: const EdgeInsets.all(12),
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                                   decoration: BoxDecoration(
                                     color: AppColors.surface,
-                                    borderRadius: BorderRadius.circular(14),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Row(
                                     children: [
                                       const Icon(Icons.layers_rounded,
-                                          color: AppColors.primary, size: 24),
-                                      const SizedBox(width: 10),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Text('Total de páginas',
-                                              style: TextStyle(
-                                                  fontSize: 11,
-                                                  color:
-                                                      AppColors.textSecondary)),
-                                          Text('$pageCount Páginas',
-                                              style: const TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w700)),
-                                        ],
+                                          color: AppColors.primary, size: 16),
+                                      const SizedBox(width: 6),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text('Total de páginas',
+                                                style: TextStyle(
+                                                    fontSize: 9.5,
+                                                    color:
+                                                        AppColors.textSecondary)),
+                                            Text('$pageCount Páginas',
+                                                style: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w700),
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 12),
+                              const SizedBox(width: 8),
                               Expanded(
                                 child: Container(
-                                  padding: const EdgeInsets.all(12),
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                                   decoration: BoxDecoration(
                                     color: AppColors.surface,
-                                    borderRadius: BorderRadius.circular(14),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Row(
                                     children: [
                                       const Icon(Icons.sell_rounded,
-                                          color: AppColors.primary, size: 24),
-                                      const SizedBox(width: 10),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Text('Preço unitário',
-                                              style: TextStyle(
-                                                  fontSize: 11,
-                                                  color:
-                                                      AppColors.textSecondary)),
-                                          Text(
-                                              'R\$ ${unitPrice.toStringAsFixed(2)} / pág',
-                                              style: const TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w700)),
-                                        ],
+                                          color: AppColors.primary, size: 16),
+                                      const SizedBox(width: 6),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text('Preço unitário',
+                                                style: TextStyle(
+                                                    fontSize: 9.5,
+                                                    color:
+                                                        AppColors.textSecondary)),
+                                            Text(
+                                                'R\$ ${unitPrice.toStringAsFixed(2)} / pág',
+                                                style: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w700),
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -283,12 +302,12 @@ class DesktopOrderSummaryView extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 6),
 
                           // Chips de Configuração
                           const Wrap(
-                            spacing: 8,
-                            runSpacing: 8,
+                            spacing: 6,
+                            runSpacing: 4,
                             children: [
                               _ConfigChip(icon: Icons.contrast_rounded, label: 'Preto & Branco'),
                               _ConfigChip(icon: Icons.crop_portrait_rounded, label: 'Formato A4'),
@@ -298,7 +317,7 @@ class DesktopOrderSummaryView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 8),
 
                     // Banner com Valor Total
                     PriceBanner(
@@ -306,29 +325,29 @@ class DesktopOrderSummaryView extends StatelessWidget {
                       pageCount: pageCount,
                       unitPrice: unitPrice,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 6),
 
                     // Observação para certificar se a impressora está ligada
                     const PrinterCheckNotice(),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 8),
 
                     // Botão Principal de Confirmação
                     AppButton(
                       label: 'Confirmar e Imprimir',
                       icon: Icons.print_rounded,
-                      height: 64,
+                      height: 44,
                       width: double.infinity,
                       type: AppButtonType.primary,
                       isLoading: vm.isLoading,
                       onPressed: () => vm.confirmAndStartPrinting(),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 2),
                     TextButton(
                       onPressed: () => vm.goToStep(2),
                       child: const Text(
                         'Trocar arquivo ou cancelar',
                         style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 11.5,
                             color: AppColors.secondary,
                             fontWeight: FontWeight.w600),
                       ),
@@ -353,21 +372,21 @@ class _ConfigChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(color: AppColors.borderTanLight),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 15, color: AppColors.textSecondary),
-          const SizedBox(width: 6),
+          Icon(icon, size: 13, color: AppColors.textSecondary),
+          const SizedBox(width: 4),
           Text(
             label,
             style: const TextStyle(
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textPrimary),
           ),

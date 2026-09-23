@@ -21,19 +21,19 @@ class PriceBanner extends StatelessWidget {
     final formattedUnit = currencyFormat.format(unitPrice);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(14),
         border: Border.all(
           color: AppColors.primary.withValues(alpha: 0.5),
-          width: 2,
+          width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
             color: AppColors.primary.withValues(alpha: 0.08),
-            blurRadius: 16,
-            offset: const Offset(0, 4),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -47,16 +47,16 @@ class PriceBanner extends StatelessWidget {
               const Text(
                 'Valor Total do Pedido',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textSecondary,
                 ),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 1),
               Text(
                 '$pageCount páginas • $formattedUnit / pág',
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 11,
                   color: AppColors.textSecondary,
                 ),
               ),
@@ -65,7 +65,7 @@ class PriceBanner extends StatelessWidget {
           Text(
             formattedTotal,
             style: const TextStyle(
-              fontSize: 34,
+              fontSize: 24,
               fontWeight: FontWeight.w800,
               color: AppColors.primary,
               letterSpacing: -0.5,

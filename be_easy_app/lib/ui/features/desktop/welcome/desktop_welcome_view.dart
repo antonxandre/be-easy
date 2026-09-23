@@ -58,7 +58,7 @@ class DesktopWelcomeView extends StatelessWidget {
     final vm = context.read<DesktopSessionViewModel>();
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1000),
@@ -69,18 +69,18 @@ class DesktopWelcomeView extends StatelessWidget {
                 alignment: WrapAlignment.spaceBetween,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 spacing: 16,
-                runSpacing: 12,
+                runSpacing: 8,
                 children: [
                   Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                     decoration: BoxDecoration(
                       color: AppColors.surface,
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.04),
-                          blurRadius: 8,
+                          blurRadius: 6,
                         ),
                       ],
                     ),
@@ -88,8 +88,8 @@ class DesktopWelcomeView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          width: 10,
-                          height: 10,
+                          width: 8,
+                          height: 8,
                           decoration: const BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
@@ -99,7 +99,7 @@ class DesktopWelcomeView extends StatelessWidget {
                         const Text(
                           'Ativo • Pronto para uso',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textPrimary,
                           ),
@@ -112,52 +112,53 @@ class DesktopWelcomeView extends StatelessWidget {
                       foregroundColor: AppColors.secondary,
                       side: const BorderSide(color: AppColors.secondary),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16)),
+                          borderRadius: BorderRadius.circular(14)),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 10),
+                          horizontal: 14, vertical: 8),
                     ),
                     onPressed: () =>
                         _showHelpDialog(context, vm.unitPriceFormatted),
-                    icon: const Icon(Icons.help_outline, size: 20),
-                    label: const Text('Ajuda & Dúvidas'),
+                    icon: const Icon(Icons.help_outline, size: 18),
+                    label: const Text('Ajuda & Dúvidas',
+                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
                   ),
                 ],
               ),
-              const SizedBox(height: 36),
+              const SizedBox(height: 10),
 
               // Logo com Halo Suave
               Stack(
                 alignment: Alignment.center,
                 children: [
                   Container(
-                    width: 130,
-                    height: 130,
+                    width: 76,
+                    height: 76,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: AppColors.primary.withValues(alpha: 0.12),
                     ),
                   ),
                   Container(
-                    width: 110,
-                    height: 110,
+                    width: 64,
+                    height: 64,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: AppColors.surface,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.08),
-                          blurRadius: 20,
-                          offset: const Offset(0, 6),
+                          blurRadius: 14,
+                          offset: const Offset(0, 4),
                         ),
                       ],
                     ),
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(10),
                     child: Image.asset(
                       'assets/images/logo.png',
                       fit: BoxFit.contain,
                       errorBuilder: (_, __, ___) => const Icon(
                         Icons.print_rounded,
-                        size: 54,
+                        size: 32,
                         color: AppColors.secondary,
                       ),
                     ),
@@ -165,60 +166,60 @@ class DesktopWelcomeView extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
 
               // Título Principal
               const Text(
                 'Impressão de Autoatendimento',
                 style: TextStyle(
-                  fontSize: 40,
+                  fontSize: 26,
                   fontWeight: FontWeight.w800,
                   color: AppColors.textPrimary,
                   letterSpacing: -0.5,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 4),
 
               // Subtítulo
               ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 600),
+                constraints: const BoxConstraints(maxWidth: 580),
                 child: const Text(
                   'Imprima seus documentos na hora, direto do celular, arquivos baixados neste computador ou pendrive.',
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 13.5,
                     color: AppColors.textSecondary,
-                    height: 1.4,
+                    height: 1.35,
                   ),
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 36),
+              const SizedBox(height: 12),
 
               // Botão Principal "Começar"
               AppButton(
                 label: 'Começar',
                 icon: Icons.arrow_forward_rounded,
-                height: 64,
-                width: 280,
+                height: 48,
+                width: 240,
                 type: AppButtonType.secondary,
                 onPressed: () => vm.nextStep(),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 4),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.touch_app_rounded,
-                      size: 16, color: AppColors.primary),
-                  SizedBox(width: 6),
+                      size: 14, color: AppColors.primary),
+                  SizedBox(width: 4),
                   Text(
                     'Clique para iniciar sua sessão',
                     style:
-                        TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                        TextStyle(fontSize: 11.5, color: AppColors.textSecondary),
                   ),
                 ],
               ),
-              const SizedBox(height: 48),
+              const SizedBox(height: 14),
 
               // 3 Cartões de Destaque Interativos
               LayoutBuilder(
@@ -258,7 +259,7 @@ class DesktopWelcomeView extends StatelessWidget {
                           .map((c) => Expanded(
                               child: Padding(
                                   padding:
-                                      const EdgeInsets.symmetric(horizontal: 8),
+                                      const EdgeInsets.symmetric(horizontal: 6),
                                   child: c)))
                           .toList(),
                     );
@@ -266,51 +267,55 @@ class DesktopWelcomeView extends StatelessWidget {
                   return Column(
                     children: cards
                         .map((c) => Padding(
-                            padding: const EdgeInsets.only(bottom: 12),
+                            padding: const EdgeInsets.only(bottom: 8),
                             child: c))
                         .toList(),
                   );
                 },
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 12),
 
               // Barra de Segurança Inferior
               Container(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                 decoration: BoxDecoration(
                   color: AppColors.surface,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                       color: AppColors.borderTanLight.withValues(alpha: 0.5)),
                 ),
                 child: const Wrap(
                   alignment: WrapAlignment.spaceAround,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   spacing: 24,
-                  runSpacing: 12,
+                  runSpacing: 6,
                   children: [
                     Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(Icons.qr_code_2_rounded,
-                            color: AppColors.primary, size: 22),
-                        SizedBox(width: 8),
+                            color: AppColors.primary, size: 18),
+                        SizedBox(width: 6),
                         Text(
                           'Pagamento via PIX',
                           style: TextStyle(
+                              fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: AppColors.textPrimary),
                         ),
                       ],
                     ),
                     Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(Icons.verified_user_rounded,
-                            color: AppColors.primary, size: 20),
-                        SizedBox(width: 8),
+                            color: AppColors.primary, size: 16),
+                        SizedBox(width: 6),
                         Text(
                           'Arquivos deletados após a impressão',
                           style: TextStyle(
-                              color: AppColors.textSecondary, fontSize: 13),
+                              color: AppColors.textSecondary, fontSize: 11.5),
                         ),
                       ],
                     ),
@@ -356,10 +361,10 @@ class _FeatureCardState extends State<_FeatureCard> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeOutCubic,
-        transform: Matrix4.translationValues(0, _isHovered ? -4 : 0, 0),
+        transform: Matrix4.translationValues(0, _isHovered ? -3 : 0, 0),
         child: AppCard(
           onTap: widget.onTap,
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 22),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           border: Border.all(
             color: _isHovered
                 ? widget.iconColor.withValues(alpha: 0.5)
@@ -371,33 +376,33 @@ class _FeatureCardState extends State<_FeatureCard> {
             children: [
               AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                width: 58,
-                height: 58,
+                width: 42,
+                height: 42,
                 decoration: BoxDecoration(
                   color: _isHovered
                       ? widget.iconColor.withValues(alpha: 0.15)
                       : AppColors.surfaceContainerLow,
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(widget.icon, color: widget.iconColor, size: 30),
+                child: Icon(widget.icon, color: widget.iconColor, size: 22),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 8),
               Text(
                 widget.title,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w700,
                   color: AppColors.textPrimary,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 3),
               Text(
                 widget.subtitle,
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 11.5,
                   color: AppColors.textSecondary,
-                  height: 1.35,
+                  height: 1.3,
                 ),
                 textAlign: TextAlign.center,
               ),

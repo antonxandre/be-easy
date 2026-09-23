@@ -42,6 +42,7 @@ class DesktopMainScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
+        toolbarHeight: 50,
         backgroundColor: AppColors.surface,
         elevation: 1,
         shadowColor: Colors.black.withValues(alpha: 0.05),

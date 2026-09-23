@@ -251,6 +251,12 @@ class DesktopSessionViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  @visibleForTesting
+  void setCurrentJobForTesting(PrintJobDto? job) {
+    _currentJob = job;
+    notifyListeners();
+  }
+
   @override
   void dispose() {
     _mockProgressTimer?.cancel();

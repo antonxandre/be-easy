@@ -280,7 +280,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
             )
           : SafeArea(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: Center(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 960),
@@ -290,7 +290,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                         // Feedback Status Banner
                         if (vm.statusMessage != null) ...[
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                             decoration: BoxDecoration(
                               color: vm.isSuccessMessage
                                   ? AppColors.primary.withValues(alpha: 0.1)
@@ -307,7 +307,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                                 Icon(
                                   vm.isSuccessMessage ? Icons.check_circle_rounded : Icons.error_outline_rounded,
                                   color: vm.isSuccessMessage ? AppColors.primary : AppColors.error,
-                                  size: 22,
+                                  size: 20,
                                 ),
                                 const SizedBox(width: 12),
                                 Expanded(
@@ -316,7 +316,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                                     style: TextStyle(
                                       color: vm.isSuccessMessage ? AppColors.secondary : AppColors.error,
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 14,
+                                      fontSize: 13,
                                     ),
                                   ),
                                 ),
@@ -327,36 +327,36 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 14),
                         ],
 
                         // Seção 1: Rede e IP
                         _buildNetworkCard(context, vm),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 16),
 
                         // Seção 2: Impressora e Spooler
                         _buildPrinterCard(context, vm),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 16),
 
                         // Seção 3: Valor por Página e PIX
                         _buildPricingCard(context, vm),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 16),
 
                         // Seção 4: Segurança do Painel
                         _buildSecurityCard(context, vm),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 16),
 
                         // Seção 5: Inicialização do Totem (Startup)
                         _buildStartupCard(context, vm),
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 24),
 
                         // Botão Flutuante de Salvar
                         Center(
                           child: AppButton(
                             label: 'Salvar Configurações',
                             icon: Icons.check_circle_outline_rounded,
-                            height: 56,
-                            width: 320,
+                            height: 48,
+                            width: 280,
                             isLoading: vm.isSaving,
                             type: AppButtonType.secondary,
                             onPressed: () async {
@@ -369,13 +369,13 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                             },
                           ),
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 8),
                         const Text(
                           'As alterações serão salvas imediatamente em disco e aplicadas ao terminal.',
-                          style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                          style: TextStyle(fontSize: 11, color: AppColors.textSecondary),
                           textAlign: TextAlign.center,
                         ),
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 24),
                       ],
                     ),
                   ),
@@ -387,46 +387,46 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
 
   Widget _buildNetworkCard(BuildContext context, AdminViewModel vm) {
     return AppCard(
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Container(
-                width: 44,
-                height: 44,
+                width: 40,
+                height: 40,
                 decoration: BoxDecoration(
                   color: AppColors.primary.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.wifi_tethering_rounded, color: AppColors.primary, size: 24),
+                child: const Icon(Icons.wifi_tethering_rounded, color: AppColors.primary, size: 22),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               const Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Configurações de Rede & IP',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
                     ),
                     Text(
                       'Defina o endereço de acesso dos smartphones e o Wi-Fi da loja.',
-                      style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                      style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
                     ),
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 14),
           const Divider(),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           // Seletor de Modo de IP
-          const Text('Modo de Identificação de IP:', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
-          const SizedBox(height: 10),
+          const Text('Modo de Identificação de IP:', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+          const SizedBox(height: 8),
           Row(
             children: [
               ChoiceChip(
@@ -438,6 +438,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                 selectedColor: AppColors.primary.withValues(alpha: 0.15),
                 labelStyle: TextStyle(
                   fontWeight: FontWeight.w700,
+                  fontSize: 12,
                   color: vm.ipMode == 'auto' ? AppColors.primary : AppColors.textSecondary,
                 ),
               ),
@@ -451,12 +452,13 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                 selectedColor: AppColors.primary.withValues(alpha: 0.15),
                 labelStyle: TextStyle(
                   fontWeight: FontWeight.w700,
+                  fontSize: 12,
                   color: vm.ipMode == 'manual' ? AppColors.primary : AppColors.textSecondary,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
 
           if (vm.ipMode == 'manual') ...[
             TextField(
@@ -469,10 +471,10 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
               ),
               onChanged: (val) => vm.setCustomIp(val),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 10),
           ] else ...[
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               decoration: BoxDecoration(
                 color: AppColors.surfaceContainerLow,
                 borderRadius: BorderRadius.circular(12),
@@ -483,26 +485,26 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.router_rounded, color: AppColors.secondary, size: 20),
-                      const SizedBox(width: 10),
+                      const Icon(Icons.router_rounded, color: AppColors.secondary, size: 18),
+                      const SizedBox(width: 8),
                       Text('IP Detectado no Sistema: ${vm.detectedIp}',
-                          style: const TextStyle(fontWeight: FontWeight.w700, color: AppColors.textPrimary)),
+                          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: AppColors.textPrimary)),
                     ],
                   ),
                   TextButton.icon(
                     onPressed: () => vm.loadData(),
                     icon: const Icon(Icons.refresh_rounded, size: 16),
-                    label: const Text('Redetectar'),
+                    label: const Text('Redetectar', style: TextStyle(fontSize: 12)),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
           ],
 
           // Link gerado para os clientes
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: AppColors.primary.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(12),
@@ -510,26 +512,26 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
             ),
             child: Row(
               children: [
-                const Icon(Icons.link_rounded, color: AppColors.primary, size: 24),
-                const SizedBox(width: 12),
+                const Icon(Icons.link_rounded, color: AppColors.primary, size: 22),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'URL de Acesso dos Clientes (QR Code Mobile):',
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textSecondary),
+                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.textSecondary),
                       ),
                       const SizedBox(height: 2),
                       SelectableText(
                         vm.clientWebUrl,
-                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: AppColors.primary),
+                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800, color: AppColors.primary),
                       ),
                     ],
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.copy_rounded, color: AppColors.primary),
+                  icon: const Icon(Icons.copy_rounded, color: AppColors.primary, size: 20),
                   tooltip: 'Copiar Link',
                   onPressed: () {
                     Clipboard.setData(ClipboardData(text: vm.clientWebUrl));
@@ -541,12 +543,12 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
               ],
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
 
           // Wi-Fi da Loja (SSID e Senha)
           const Text('Wi-Fi da Loja (Exibido no QR Code de Conexão):',
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
-          const SizedBox(height: 10),
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+          const SizedBox(height: 8),
           Row(
             children: [
               Expanded(
@@ -560,7 +562,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                   onChanged: (val) => vm.setWifiSsid(val),
                 ),
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 14),
               Expanded(
                 child: TextField(
                   controller: _wifiPasswordController,
@@ -582,14 +584,14 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
 
           // Prévia do QR Code de Conexão Wi-Fi
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: AppColors.surfaceContainerLow,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(14),
               border: Border.all(color: AppColors.borderTanLight),
             ),
             child: Row(
@@ -597,29 +599,29 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
               children: [
                 QrCodeCard(
                   data: vm.wifiQrData,
-                  size: 110,
+                  size: 95,
                   title: '',
                   subtitle: '',
                   centerIcon: Icons.wifi_rounded,
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: 14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'QR Code de Conexão Automática do Wi-Fi',
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14, color: AppColors.textPrimary),
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: AppColors.textPrimary),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 3),
                       Text(
                         'Rede: ${vm.wifiSsid}',
-                        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13, color: AppColors.secondary),
+                        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12, color: AppColors.secondary),
                       ),
                       const SizedBox(height: 2),
                       const Text(
                         'Clientes com Android e iPhone conectam automaticamente apontando a câmera para este QR Code.',
-                        style: TextStyle(fontSize: 12, color: AppColors.textSecondary, height: 1.3),
+                        style: TextStyle(fontSize: 11, color: AppColors.textSecondary, height: 1.3),
                       ),
                     ],
                   ),
@@ -634,96 +636,102 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
 
   Widget _buildPrinterCard(BuildContext context, AdminViewModel vm) {
     return AppCard(
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Container(
-                    width: 44,
-                    height: 44,
-                    decoration: BoxDecoration(
-                      color: AppColors.tertiary.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(12),
+              Expanded(
+                child: Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: AppColors.tertiary.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(Icons.print_rounded, color: AppColors.tertiary, size: 22),
                     ),
-                    child: const Icon(Icons.print_rounded, color: AppColors.tertiary, size: 24),
-                  ),
-                  const SizedBox(width: 14),
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Busca e Seleção da Impressora',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
+                    const SizedBox(width: 12),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Busca e Seleção da Impressora',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
+                          ),
+                          Text(
+                            'Varredura das impressoras conectadas no computador ou Spooler Virtual.',
+                            style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Varredura das impressoras conectadas no computador ou Spooler Virtual.',
-                        style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
+              const SizedBox(width: 12),
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.surfaceContainerHigh,
                   foregroundColor: AppColors.secondary,
                   elevation: 0,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 ),
                 onPressed: vm.isSearchingPrinters ? null : () => vm.searchPrinters(),
                 icon: vm.isSearchingPrinters
                     ? const SizedBox(
-                        width: 16,
-                        height: 16,
+                        width: 14,
+                        height: 14,
                         child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.secondary),
                       )
-                    : const Icon(Icons.refresh_rounded, size: 18),
-                label: const Text('Buscar Impressoras', style: TextStyle(fontWeight: FontWeight.w700)),
+                    : const Icon(Icons.refresh_rounded, size: 16),
+                label: const Text('Buscar Impressoras', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 14),
           const Divider(),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           // Lista de Impressoras Encontradas
-          const Text('Impressora Ativa no Terminal:', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
-          const SizedBox(height: 10),
+          const Text('Impressora Ativa no Terminal:', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+          const SizedBox(height: 8),
 
           if (vm.printers.isEmpty)
             Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 color: AppColors.surfaceContainerLow,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Text('Nenhuma impressora encontrada. Clique em Buscar Impressoras.'),
+              child: const Text('Nenhuma impressora encontrada. Clique em Buscar Impressoras.', style: TextStyle(fontSize: 13)),
             )
           else
             Column(
               children: vm.printers.map((printer) {
                 final isSelected = vm.selectedPrinter == printer.name;
-                return Container(
-                  margin: const EdgeInsets.only(bottom: 8),
-                  decoration: BoxDecoration(
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: Material(
                     color: isSelected ? AppColors.primary.withValues(alpha: 0.08) : AppColors.surface,
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(
-                      color: isSelected ? AppColors.primary : AppColors.borderTanLight,
-                      width: isSelected ? 2 : 1,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                        color: isSelected ? AppColors.primary : AppColors.borderTanLight,
+                        width: isSelected ? 2 : 1,
+                      ),
                     ),
-                  ),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
                     leading: Container(
-                      width: 22,
-                      height: 22,
+                      width: 20,
+                      height: 20,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
@@ -734,8 +742,8 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                       child: isSelected
                           ? Center(
                               child: Container(
-                                width: 12,
-                                height: 12,
+                                width: 10,
+                                height: 10,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: AppColors.primary,
@@ -749,6 +757,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                         Text(
                           printer.name,
                           style: TextStyle(
+                            fontSize: 14,
                             fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
                             color: isSelected ? AppColors.textPrimary : AppColors.textSecondary,
                           ),
@@ -756,38 +765,39 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                         const SizedBox(width: 8),
                         if (printer.isMock)
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
                               color: AppColors.tertiary.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: const Text(
                               'TESTES / SIMULAÇÃO',
-                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: AppColors.tertiary),
+                              style: TextStyle(fontSize: 9, fontWeight: FontWeight.w800, color: AppColors.tertiary),
                             ),
                           )
                         else if (printer.isDefault)
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
                               color: AppColors.primary.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: const Text(
                               'PADRÃO DO SISTEMA',
-                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: AppColors.primary),
+                              style: TextStyle(fontSize: 9, fontWeight: FontWeight.w800, color: AppColors.primary),
                             ),
                           ),
                       ],
                     ),
-                    subtitle: Text('Status: ${printer.status}', style: const TextStyle(fontSize: 12)),
+                    subtitle: Text('Status: ${printer.status}', style: const TextStyle(fontSize: 11)),
                     onTap: () => vm.selectPrinter(printer),
                   ),
-                );
-              }).toList(),
+                ),
+              );
+            }).toList(),
             ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           // Botão Imprimir Página de Teste
           Row(
@@ -797,18 +807,18 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppColors.secondary,
                   side: const BorderSide(color: AppColors.secondary),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                 ),
                 onPressed: vm.isTestingPrint ? null : () => vm.testPrint(),
                 icon: vm.isTestingPrint
                     ? const SizedBox(
-                        width: 16,
-                        height: 16,
+                        width: 14,
+                        height: 14,
                         child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.secondary),
                       )
-                    : const Icon(Icons.print_outlined, size: 18),
-                label: const Text('Imprimir Página de Teste', style: TextStyle(fontWeight: FontWeight.w700)),
+                    : const Icon(Icons.print_outlined, size: 16),
+                label: const Text('Imprimir Página de Teste', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
               ),
             ],
           ),
@@ -819,42 +829,42 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
 
   Widget _buildPricingCard(BuildContext context, AdminViewModel vm) {
     return AppCard(
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Container(
-                width: 44,
-                height: 44,
+                width: 40,
+                height: 40,
                 decoration: BoxDecoration(
                   color: AppColors.primary.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.payments_outlined, color: AppColors.primary, size: 24),
+                child: const Icon(Icons.payments_outlined, color: AppColors.primary, size: 22),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               const Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Valor por Página & Pagamento PIX',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
                     ),
                     Text(
                       'Configure a cobrança por folha impressa e os dados de recebimento bancário.',
-                      style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                      style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
                     ),
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 14),
           const Divider(),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           // Preço por Página com botões rápidos
           Row(
@@ -866,13 +876,13 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text('Preço cobrado por página:',
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
-                    const SizedBox(height: 8),
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+                    const SizedBox(height: 6),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: AppColors.surface,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(14),
                         border: Border.all(color: AppColors.primary, width: 2),
                       ),
                       child: Row(
@@ -880,56 +890,66 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                         children: [
                           const Text('R\$',
                               style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.w800, color: AppColors.textSecondary)),
-                          const SizedBox(width: 8),
+                                  fontSize: 20, fontWeight: FontWeight.w800, color: AppColors.textSecondary)),
+                          const SizedBox(width: 6),
                           Text(
                             vm.unitPrice.toStringAsFixed(2),
                             style: const TextStyle(
-                                fontSize: 36, fontWeight: FontWeight.w800, color: AppColors.primary),
+                                fontSize: 28, fontWeight: FontWeight.w800, color: AppColors.primary),
                           ),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 6),
                           const Text('/ pág',
-                              style: TextStyle(fontSize: 14, color: AppColors.textSecondary, fontWeight: FontWeight.w600)),
+                              style: TextStyle(fontSize: 13, color: AppColors.textSecondary, fontWeight: FontWeight.w600)),
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(width: 24),
+              const SizedBox(width: 20),
               Expanded(
                 flex: 3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Ajuste Rápido:', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
-                    const SizedBox(height: 8),
+                    const Text('Ajuste Rápido:', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                    const SizedBox(height: 6),
                     Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
+                      spacing: 6,
+                      runSpacing: 6,
                       children: [
                         OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          ),
                           onPressed: () => vm.adjustUnitPrice(-0.50),
-                          child: const Text('- R\$ 0,50'),
+                          child: const Text('- R\$ 0,50', style: TextStyle(fontSize: 12)),
                         ),
                         OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          ),
                           onPressed: () => vm.adjustUnitPrice(0.50),
-                          child: const Text('+ R\$ 0,50'),
+                          child: const Text('+ R\$ 0,50', style: TextStyle(fontSize: 12)),
                         ),
                         ActionChip(
-                          label: const Text('R\$ 1,50'),
+                          labelPadding: const EdgeInsets.symmetric(horizontal: 4),
+                          label: const Text('R\$ 1,50', style: TextStyle(fontSize: 12)),
                           onPressed: () => vm.setUnitPrice(1.50),
                         ),
                         ActionChip(
-                          label: const Text('R\$ 2,00'),
+                          labelPadding: const EdgeInsets.symmetric(horizontal: 4),
+                          label: const Text('R\$ 2,00', style: TextStyle(fontSize: 12)),
                           onPressed: () => vm.setUnitPrice(2.00),
                         ),
                         ActionChip(
-                          label: const Text('R\$ 2,50'),
+                          labelPadding: const EdgeInsets.symmetric(horizontal: 4),
+                          label: const Text('R\$ 2,50', style: TextStyle(fontSize: 12)),
                           onPressed: () => vm.setUnitPrice(2.50),
                         ),
                         ActionChip(
-                          label: const Text('R\$ 3,00'),
+                          labelPadding: const EdgeInsets.symmetric(horizontal: 4),
+                          label: const Text('R\$ 3,00', style: TextStyle(fontSize: 12)),
                           onPressed: () => vm.setUnitPrice(3.00),
                         ),
                       ],
@@ -939,11 +959,11 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
               ),
             ],
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
 
           // Dados do PIX
-          const Text('Dados do PIX (Recebedor):', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
-          const SizedBox(height: 10),
+          const Text('Dados do PIX (Recebedor):', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+          const SizedBox(height: 8),
           Row(
             children: [
               Expanded(
@@ -958,7 +978,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                   onChanged: (val) => vm.setPixKey(val),
                 ),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               Expanded(
                 flex: 2,
                 child: TextField(
@@ -970,7 +990,7 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
                   onChanged: (val) => vm.setMerchantName(val),
                 ),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               Expanded(
                 flex: 1,
                 child: TextField(
@@ -991,47 +1011,52 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
 
   Widget _buildSecurityCard(BuildContext context, AdminViewModel vm) {
     return AppCard(
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: AppColors.secondary.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(12),
+          Expanded(
+            child: Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: AppColors.secondary.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(Icons.security_rounded, color: AppColors.secondary, size: 22),
                 ),
-                child: const Icon(Icons.security_rounded, color: AppColors.secondary, size: 24),
-              ),
-              const SizedBox(width: 14),
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Segurança do Terminal',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
+                const SizedBox(width: 12),
+                const Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Segurança do Terminal',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary),
+                      ),
+                      Text(
+                        'Altere a senha de acesso a este painel administrativo.',
+                        style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'Altere a senha de acesso a este painel administrativo.',
-                    style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
-                  ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
+          const SizedBox(width: 12),
           OutlinedButton.icon(
             style: OutlinedButton.styleFrom(
               foregroundColor: AppColors.secondary,
               side: const BorderSide(color: AppColors.borderTanLight),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             ),
             onPressed: () => _showChangePasswordDialog(context, vm),
-            icon: const Icon(Icons.key_rounded, size: 18),
-            label: const Text('Alterar Senha Admin', style: TextStyle(fontWeight: FontWeight.w700)),
+            icon: const Icon(Icons.key_rounded, size: 16),
+            label: const Text('Alterar Senha Admin', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
           ),
         ],
       ),
@@ -1041,49 +1066,49 @@ class _AdminSettingsContentState extends State<_AdminSettingsContent> {
   Widget _buildStartupCard(BuildContext context, AdminViewModel vm) {
     final isWindows = !kIsWeb && Platform.isWindows;
     return AppCard(
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Container(
-                width: 44,
-                height: 44,
+                width: 40,
+                height: 40,
                 decoration: BoxDecoration(
                   color: AppColors.secondary.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.power_settings_new_rounded, color: AppColors.secondary, size: 24),
+                child: const Icon(Icons.power_settings_new_rounded, color: AppColors.secondary, size: 22),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Inicialização do Sistema (Modo Totem)',
-                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18, color: AppColors.textPrimary),
+                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16, color: AppColors.textPrimary),
                   ),
                   Text(
                     'Configurar inicialização automática junto ao ligar o computador',
-                    style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                    style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
                   ),
                 ],
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 14),
           SwitchListTile.adaptive(
             contentPadding: EdgeInsets.zero,
             title: const Text(
               'Iniciar automaticamente com o Windows',
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15, color: AppColors.textPrimary),
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14, color: AppColors.textPrimary),
             ),
             subtitle: Text(
               isWindows
                   ? 'Inicia o totem de autoatendimento e o servidor local no boot do Windows.'
                   : 'Funcionalidade ativa no ambiente Windows (configuração automática do Registro do Sistema).',
-              style: const TextStyle(fontSize: 13, color: AppColors.textSecondary),
+              style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
             ),
             value: vm.isWindowsAutoStart,
             activeTrackColor: AppColors.primary,

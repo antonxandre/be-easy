@@ -66,15 +66,15 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
         borderRadius: BorderRadius.circular(20),
         child: Container(
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 36),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
           decoration: BoxDecoration(
             color: _isDragging
                 ? AppColors.primary.withValues(alpha: 0.12)
                 : AppColors.dropzoneTint,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: _isDragging ? AppColors.primary : AppColors.tertiary,
-              width: 2.5,
+              width: 2,
               style: BorderStyle.solid,
             ),
           ),
@@ -82,60 +82,60 @@ class _DropzoneWidgetState extends State<DropzoneWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: 64,
-                height: 64,
+                width: 48,
+                height: 48,
                 decoration: BoxDecoration(
                   color: AppColors.surface,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(14),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.06),
-                      blurRadius: 10,
+                      blurRadius: 8,
                     ),
                   ],
                 ),
                 child: const Icon(
                   Icons.upload_file_rounded,
-                  size: 36,
+                  size: 28,
                   color: AppColors.secondary,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
               const Text(
                 'Arraste seus arquivos PDF para cá',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 15,
                   fontWeight: FontWeight.w700,
                   color: AppColors.textPrimary,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               const Text(
                 'ou clique para selecionar do pendrive/pastas',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 12,
                   color: AppColors.textSecondary,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                 decoration: BoxDecoration(
                   color: AppColors.surface,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: AppColors.borderTanLight),
                 ),
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.usb_rounded, size: 18, color: AppColors.secondary),
-                    SizedBox(width: 8),
+                    Icon(Icons.usb_rounded, size: 16, color: AppColors.secondary),
+                    SizedBox(width: 6),
                     Text(
                       'Acessar Pendrive USB',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: AppColors.secondary,
                       ),
