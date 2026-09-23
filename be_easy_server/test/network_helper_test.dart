@@ -21,5 +21,10 @@ void main() {
       final ip = await NetworkHelper.findLocalIp();
       expect(ip.startsWith('169.254.'), isFalse);
     });
+
+    test('findLocalIp never returns 8.8.8.8', () async {
+      final ip = await NetworkHelper.findLocalIp();
+      expect(ip, isNot('8.8.8.8'));
+    });
   });
 }

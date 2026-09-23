@@ -38,6 +38,7 @@ class BeEasyServer {
   String customIp;
   String selectedPrinter;
   bool useMockPrinter;
+  final bool persistConfig;
 
   HttpServer? _server;
 
@@ -57,6 +58,7 @@ class BeEasyServer {
     bool useMockPrinter = true,
     this.uploadsDir = 'uploads',
     this.webAssetsPath,
+    this.persistConfig = true,
   })  : printerService = printerService ?? PrinterService(),
         unitPrice = defaultUnitPrice,
         adminPassword = adminPassword,
@@ -215,7 +217,9 @@ class BeEasyServer {
   }
 
   File? _findConfigFile() {
+    final exeDir = p.dirname(Platform.resolvedExecutable);
     final candidatePaths = [
+      p.join(exeDir, 'config.json'),
       'config.json',
       'be_easy_server/config.json',
       '../config.json',
@@ -227,10 +231,11 @@ class BeEasyServer {
       final f = File(path);
       if (f.existsSync()) return f;
     }
-    return File('config.json');
+    return File(p.join(exeDir, 'config.json'));
   }
 
   void _saveConfig() {
+    if (!persistConfig) return;
     try {
       final file = _findConfigFile();
       Map<String, dynamic> current = {};
@@ -254,7 +259,9 @@ class BeEasyServer {
       final updatedJson = const JsonEncoder.withIndent('  ').convert(current);
       file?.writeAsStringSync(updatedJson);
 
+      final exeDir = p.dirname(Platform.resolvedExecutable);
       final otherCandidatePaths = [
+        p.join(exeDir, 'config.json'),
         'config.json',
         'be_easy_server/config.json',
         '../config.json',

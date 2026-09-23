@@ -57,6 +57,7 @@ void main() {
         wifiSsid: 'beEASY_Loja',
         wifiPassword: 'senha1234',
         uploadsDir: 'uploads_test',
+        persistConfig: false,
       );
 
       await server.start();

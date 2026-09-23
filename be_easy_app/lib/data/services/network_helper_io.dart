@@ -20,6 +20,8 @@ class NetworkHelper {
     'dummy',
     'tap',
     'tun',
+    'hyper-v',
+    'host-only',
   ];
 
   static Future<String> findLocalIp() async {
@@ -28,46 +30,49 @@ class NetworkHelper {
     }
 
     try {
-      final socket = await RawSocket.connect(
-        InternetAddress('8.8.8.8'),
-        53,
-        timeout: const Duration(seconds: 1),
-      );
-      final ip = socket.address.address;
-      socket.close();
-      if (_isValidLanIp(ip)) {
-        return ip;
-      }
-    } catch (_) {}
-
-    try {
       final interfaces = await NetworkInterface.list(
         type: InternetAddressType.IPv4,
         includeLinkLocal: false,
       );
 
-      for (final iface in interfaces) {
-        if (_isIgnoredInterface(iface.name)) continue;
-
-        final isLikelyPhysical = _isLikelyPhysicalInterface(iface.name);
-        if (isLikelyPhysical) {
-          for (final addr in iface.addresses) {
-            if (_isValidLanIp(addr.address)) {
-              return addr.address;
-            }
-          }
-        }
-      }
+      final List<String> physicalRfc1918 = [];
+      final List<String> otherRfc1918 = [];
+      final List<String> anyValidLan = [];
 
       for (final iface in interfaces) {
         if (_isIgnoredInterface(iface.name)) continue;
+        final isPhysical = _isLikelyPhysicalInterface(iface.name);
 
         for (final addr in iface.addresses) {
-          if (_isValidLanIp(addr.address)) {
-            return addr.address;
+          final ip = addr.address;
+          if (_isPrivateRfc1918Ip(ip)) {
+            if (isPhysical) {
+              physicalRfc1918.add(ip);
+            } else {
+              otherRfc1918.add(ip);
+            }
+          } else if (_isValidLanIp(ip)) {
+            anyValidLan.add(ip);
           }
         }
       }
+
+      // Prioridade 1: Interface física com IP 192.168.* (padrão de roteadores Wi-Fi locais)
+      final wifi192 = physicalRfc1918.where((ip) => ip.startsWith('192.168.')).toList();
+      if (wifi192.isNotEmpty) return wifi192.first;
+
+      // Prioridade 2: Qualquer outra faixa física privada (10.* ou 172.16-31.*)
+      if (physicalRfc1918.isNotEmpty) return physicalRfc1918.first;
+
+      // Prioridade 3: Outra interface não ignorada com IP 192.168.*
+      final other192 = otherRfc1918.where((ip) => ip.startsWith('192.168.')).toList();
+      if (other192.isNotEmpty) return other192.first;
+
+      // Prioridade 4: Qualquer interface não ignorada com IP privado
+      if (otherRfc1918.isNotEmpty) return otherRfc1918.first;
+
+      // Prioridade 5: Qualquer IPv4 válido não-loopback
+      if (anyValidLan.isNotEmpty) return anyValidLan.first;
     } catch (_) {}
 
     return '127.0.0.1';
@@ -86,18 +91,47 @@ class NetworkHelper {
     return lower.contains('wi-fi') ||
         lower.contains('wifi') ||
         lower.contains('wireless') ||
+        lower.contains('sem fio') ||
         lower.contains('ethernet') ||
         lower.contains('wlan') ||
+        lower.contains('lan') ||
+        lower.contains('rede') ||
+        lower.contains('conex') ||
         lower.startsWith('en') ||
         lower.startsWith('eth');
+  }
+
+  static bool _isPrivateRfc1918Ip(String ip) {
+    if (ip.isEmpty) return false;
+    final parts = ip.split('.');
+    if (parts.length != 4) return false;
+    final p0 = int.tryParse(parts[0]);
+    final p1 = int.tryParse(parts[1]);
+    if (p0 == null || p1 == null) return false;
+
+    // 10.0.0.0/8
+    if (p0 == 10) return true;
+    // 172.16.0.0/12 (172.16.0.0 – 172.31.255.255)
+    if (p0 == 172 && p1 >= 16 && p1 <= 31) return true;
+    // 192.168.0.0/16
+    if (p0 == 192 && p1 == 168) return true;
+
+    return false;
   }
 
   static bool _isValidLanIp(String ip) {
     if (ip.isEmpty) return false;
     if (ip == '127.0.0.1' || ip == '0.0.0.0') return false;
     if (ip.startsWith('169.254.')) return false;
+    if (ip.startsWith('127.')) return false;
+    if (ip.startsWith('224.') || ip.startsWith('239.')) return false;
+    if (ip == '8.8.8.8' || ip == '8.8.4.4' || ip == '1.1.1.1') return false;
     final parts = ip.split('.');
     if (parts.length != 4) return false;
+    for (final p in parts) {
+      final n = int.tryParse(p);
+      if (n == null || n < 0 || n > 255) return false;
+    }
     return true;
   }
 }

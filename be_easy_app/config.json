@@ -3,11 +3,11 @@
   "merchantName": "BE EASY PRINT",
   "merchantCity": "SAO PAULO",
   "unitPrice": 2.0,
-  "adminPassword": "NovaSenha@999",
-  "wifiSsid": "beEASY_Loja",
-  "wifiPassword": "senha1234",
+  "adminPassword": "BeEasy@2026",
+  "wifiSsid": "BE EASY - TEFNet_5g",
+  "wifiPassword": "clientebeeasy7789@",
   "customIp": "",
-  "serverPort": 8089,
+  "serverPort": 8080,
   "selectedPrinter": "",
   "useMockPrinter": true
 }
