@@ -11,6 +11,9 @@ cd /d "%ROOT_DIR%"
 echo [1/4] Verificando ambiente Flutter...
 where flutter >nul 2>nul
 if %errorlevel% neq 0 (
+    if defined FLUTTER_ROOT (
+        if exist "%FLUTTER_ROOT%\bin\flutter.bat" set "PATH=%FLUTTER_ROOT%\bin;%PATH%"
+    )
     if exist "C:\src\flutter\bin\flutter.bat" (
         set "PATH=C:\src\flutter\bin;%PATH%"
     ) else if exist "C:\flutter\bin\flutter.bat" (
@@ -34,7 +37,7 @@ if %errorlevel% neq 0 (
     echo 3. Adicione a pasta 'bin' (ex: C:\src\flutter\bin) a variavel de ambiente PATH do Windows.
     echo 4. Feche e reabra esta janela do terminal.
     echo.
-    pause
+    if not "%CI%"=="true" pause
     exit /b 1
 )
 
@@ -46,7 +49,7 @@ cd /d "%ROOT_DIR%\be_easy_app"
 call flutter build web --release
 if %errorlevel% neq 0 (
     echo [ERRO] Falha ao compilar o Web App.
-    pause
+    if not "%CI%"=="true" pause
     exit /b 1
 )
 
@@ -65,7 +68,7 @@ call flutter build windows --release
 if %errorlevel% neq 0 (
     echo [ERRO] Falha ao compilar o executavel Windows.
     echo Certifique-se de que o Visual Studio com suporte a C++ Desktop esta instalado.
-    pause
+    if not "%CI%"=="true" pause
     exit /b 1
 )
 
@@ -112,4 +115,5 @@ echo  - instalar_inicializacao.bat (Ativa inicializacao no boot do Windows)
 echo  - remover_inicializacao.bat (Remove da inicializacao)
 echo ======================================================================
 echo.
-pause
+if not "%CI%"=="true" pause
+

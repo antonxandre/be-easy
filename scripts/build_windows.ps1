@@ -15,6 +15,7 @@ Write-Host ""
 Write-Host "[1/4] Verificando ambiente Flutter..." -ForegroundColor Yellow
 if (-not (Get-Command flutter -ErrorAction SilentlyContinue)) {
     $CommonPaths = @(
+        "$env:FLUTTER_ROOT\bin",
         "C:\src\flutter\bin",
         "C:\flutter\bin",
         "$env:USERPROFILE\flutter\bin",
@@ -22,7 +23,7 @@ if (-not (Get-Command flutter -ErrorAction SilentlyContinue)) {
         "$env:USERPROFILE\development\flutter\bin"
     )
     foreach ($path in $CommonPaths) {
-        if (Test-Path "$path\flutter.bat") {
+        if ($path -and (Test-Path "$path\flutter.bat")) {
             $env:PATH = "$path;$env:PATH"
             break
         }

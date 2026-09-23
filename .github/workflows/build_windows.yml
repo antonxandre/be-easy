@@ -21,12 +21,23 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Executar Script Automatizado de Build
-        shell: cmd
+      - name: Habilitar Suporte Desktop Windows
+        shell: pwsh
         run: |
-          call scripts\build_windows.bat
+          flutter config --enable-windows-desktop
+          flutter doctor -v
 
-      - name: Fazer Upload do Pacote Windows como Artefato (dist_windows)
+      - name: Executar Script Automatizado de Build
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File .\scripts\build_windows.ps1
+
+      - name: Compactar Pacote para Download Único (.zip)
+        shell: pwsh
+        run: |
+          Compress-Archive -Path dist_windows\* -DestinationPath dist_windows\be-easy-windows-x64.zip -Force
+
+      - name: Fazer Upload do Pacote Windows como Artefato
         uses: actions/upload-artifact@v4
         with:
           name: be-easy-print-windows-x64
