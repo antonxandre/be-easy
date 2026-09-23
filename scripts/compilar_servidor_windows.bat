@@ -9,6 +9,9 @@ set ROOT_DIR=%~dp0..
 cd /d "%ROOT_DIR%\be_easy_server"
 
 echo [1/2] Obtendo dependencias do servidor...
+if not exist "%ROOT_DIR%\be_easy_server\sqlite3.dll" (
+    if exist "%ROOT_DIR%\sqlite3.dll" copy /Y "%ROOT_DIR%\sqlite3.dll" "%ROOT_DIR%\be_easy_server\sqlite3.dll" >nul
+)
 call dart pub get
 
 echo.

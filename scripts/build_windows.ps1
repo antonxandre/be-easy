@@ -82,6 +82,13 @@ if (-not (Test-Path $ReleaseDir)) {
 Write-Host "Copiando binarios executaveis e bibliotecas..." -ForegroundColor Gray
 Copy-Item -Path "$ReleaseDir\*" -Destination $DistDir -Recurse -Force
 
+Write-Host "Copiando biblioteca nativa sqlite3.dll..." -ForegroundColor Gray
+if (Test-Path "$RootDir\sqlite3.dll") {
+    Copy-Item -Path "$RootDir\sqlite3.dll" -Destination "$DistDir\sqlite3.dll" -Force
+} elseif (Test-Path "$RootDir\be_easy_server\sqlite3.dll") {
+    Copy-Item -Path "$RootDir\be_easy_server\sqlite3.dll" -Destination "$DistDir\sqlite3.dll" -Force
+}
+
 Write-Host "Copiando Web App para servir aos celulares..." -ForegroundColor Gray
 $DistWebDir = "$DistDir\web"
 New-Item -ItemType Directory -Path $DistWebDir -Force | Out-Null

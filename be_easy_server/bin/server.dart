@@ -10,6 +10,7 @@ import 'package:be_easy_server/src/services/print_queue_service.dart';
 import 'package:be_easy_server/src/services/print_spooler_service.dart';
 
 void main(List<String> arguments) async {
+  setupSqliteLibrary();
   final parser = ArgParser()
     ..addFlag('help', abbr: 'h', negatable: false, help: 'Mostra esta mensagem de ajuda')
     ..addOption('port', abbr: 'p', defaultsTo: '8080', help: 'Porta HTTP do servidor')

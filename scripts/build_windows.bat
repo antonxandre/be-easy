@@ -89,6 +89,13 @@ if not exist "%RELEASE_DIR%" (
 echo Copiando binarios executaveis e bibliotecas...
 xcopy /E /Y /I "%RELEASE_DIR%\*" "%DIST_DIR%\" >nul
 
+echo Copiando biblioteca nativa sqlite3.dll...
+if exist "%ROOT_DIR%\sqlite3.dll" (
+    copy /Y "%ROOT_DIR%\sqlite3.dll" "%DIST_DIR%\sqlite3.dll" >nul
+) else if exist "%ROOT_DIR%\be_easy_server\sqlite3.dll" (
+    copy /Y "%ROOT_DIR%\be_easy_server\sqlite3.dll" "%DIST_DIR%\sqlite3.dll" >nul
+)
+
 echo Copiando Web App para servir aos celulares...
 mkdir "%DIST_DIR%\web"
 xcopy /E /Y /I "%ROOT_DIR%\be_easy_app\build\web\*" "%DIST_DIR%\web\" >nul

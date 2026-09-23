@@ -17,6 +17,7 @@ class ServerManagerIo implements ServerManager {
     if (_isRunning) return;
 
     try {
+      setupSqliteLibrary();
       final database = AppDatabase();
       final pdfService = PdfService();
 
